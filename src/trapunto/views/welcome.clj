@@ -1,9 +1,9 @@
 (ns trapunto.views.welcome
   (:require [trapunto.views.common :as common])
-  (:use [noir.core :only [defpage defpartial]
-         [noir.response :only [empty json]]
-         [hiccup.core :only [html]]
-         [hiccup.form :only [form-to text-area submit-button]]]))
+  (:use [noir.core :only [defpage defpartial]]
+        [noir.response :only [empty json]]
+        [hiccup.core :only [html]]
+        [hiccup.form :only [form-to text-area submit-button]]))
 
 (defpage "/" []
   (common/layout
@@ -18,7 +18,3 @@
 (defpage [:post "/"] {}
   (empty))
 
-#_(comment (defpage [:post "/"] {:keys [code]}
-   ;; take code, pipe to quil in sandox
-   ;; then use that image to refresh it only on the same page
-   (println code)))

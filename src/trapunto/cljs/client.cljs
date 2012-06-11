@@ -11,7 +11,7 @@
            (= (. xhr -status) 200)
            (do
              ;; temporary testing value
-             (set! (.. js/Document (getElementById "visible") -value)
+             (set! (.. js/document (getElementById "visible") -value)
                    "Works!"))
 
            ;; actual image replacement code
@@ -23,7 +23,6 @@
     (if-not (= visible (.. js/document (getElementById "invisible") -value))
       (do (set! (.. js/document (getElementById "invisible") -value)  visible)
           (doto xhr
-            (comment (set! (. -onreadystatechange replace-image)))
             (. open "POST" "/" false) 
             (. setRequestHeader "Content-Type" "application/json")
             (. send {:code visible}))
