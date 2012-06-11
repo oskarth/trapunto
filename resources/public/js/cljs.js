@@ -12133,3 +12133,11 @@ cljs.core.prefers = function(a) {
 };
 var trapunto = {test:{}};
 alert("howdy");
+trapunto.compare_code = function() {
+  var a = document.getElementById("visible").value;
+  return cljs.core.not.call(null, cljs.core._EQ_.call(null, a, document.getElementById("invisible").value)) ? document.getElementById("invisible").value = a : null
+};
+trapunto.timer = function(a) {
+  return setInterval(trapunto.compare_code, a)
+};
+goog.exportSymbol("trapunto.timer", trapunto.timer);
