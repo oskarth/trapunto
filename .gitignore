@@ -2,8 +2,8 @@ pom.xml
 *jar
 /lib/
 /classes/
-.lein-deps-sum
-.lein-cljsbuild*
+.lein*
+resources/public/js/cljs.js
 /native/
 /resources/public/img/
 *~
