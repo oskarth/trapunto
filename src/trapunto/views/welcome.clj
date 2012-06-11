@@ -3,14 +3,16 @@
   (:use [noir.core :only [defpage defpartial]]
         [hiccup.core :only [html]]
         [hiccup.form :only [form-to text-area submit-button]]))
-               
+
 (defpage "/" []
   (common/layout
    [:p "Welcome to trapunto"]
    (form-to [:post "/"]
-            (text-area {:class "code"} "code" "")
+            (text-area {:id "visible"} "")
+            (text-area {:id "invisible"} "")
             (submit-button "Submit"))
-  [:img {:src "/img/trapunto1.jpg" :width "80" :height "80" :float "left"}]))
+   [:img {:src "/img/trapunto1.jpg" :width "80" :height "80" :float "left"}]
+   [:script {:type "text/javascript"} "trapunto.timer(2000);"]))
 
 (defpage [:post "/"] {:keys [code]}
   ;; take code, pipe to quil in sandox
