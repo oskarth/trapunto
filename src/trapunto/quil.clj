@@ -4,6 +4,7 @@
 (ns trapunto
   (:use [quil.core]
         [clojail.core]
+        [clojail.testers :only [secure-tester]]
         [clj-time.core :only [now]]
         [clj-time.coerce :only [to-long]]))
 
@@ -27,22 +28,24 @@
   (str (to-long (now))))
 
 ;; TODO: extract file name
-;; TODO: clojail process
+;; TODO: enable clojail process
 
 ;; insert draw before base-level code, and save after it
 (defn draw []
   (let [name (gen-name)]
-;;  ((sandbox secure-tester)
-   ;; insert user code here
-  (stroke (random 255))             ;;Set the stroke colour to a random grey
-  (stroke-weight (random 10))       ;;Set the stroke thickness randomly
-  (fill (random 255))               ;;Set the fill colour to a random grey
+    ;;  ((sandbox secure-tester) ;; toggle this to enable sandbox, repl
+    ;; insert user code here
+    
+    (stroke (random 255))             ;;Set the stroke colour to a random grey
+    (stroke-weight (random 10))       ;;Set the stroke thickness randomly
+    (fill (random 255))               ;;Set the fill colour to a random grey
+    
+    (let [diam (random 100)           ;;Set the diameter to a value between 0 and 100
+          x    (random (width))       ;;Set the x coord randomly within the sketch
+          y    (random (height))]     ;;Set the y coord randomly within the sketch
+      (ellipse x y diam diam)))       ;;Draw a circle at x y with the correct diameter
   
-  (let [diam (random 100)           ;;Set the diameter to a value between 0 and 100
-        x    (random (width))       ;;Set the x coord randomly within the sketch
-        y    (random (height))]     ;;Set the y coord randomly within the sketch
-    (ellipse x y diam diam))       ;;Draw a circle at x y with the correct diameter
-;;   ) ;; jail time ends here
+  ;;   ) ;; jail time ends here
   (save (str "resources/public/img/" name ".png")))) ;; insert file name to upload here
 ;; here we want to send back name to user
 
