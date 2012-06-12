@@ -3,7 +3,6 @@
 A website written in noir. 
 
 ## Usage
-
 ```bash
 lein deps
 lein run

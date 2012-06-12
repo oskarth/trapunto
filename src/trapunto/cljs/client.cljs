@@ -1,9 +1,11 @@
-(ns trapunto) 
+(ns trapunto.client)
 
-(declare compare-code)
-
+;; TODO: howdy world use text as src
+;; TODO: eval text (+ 3 4) and use as src
 ;; TODO: replace filename with saved image
 ;; TODO: fix bad image reloaded (marked region?)
+
+(declare compare-code)
 
 (defn ^:export timer [delay-ms]
   (js/setInterval compare-code delay-ms))
@@ -23,7 +25,7 @@
                ;; actual image replacement code
                (comment (.. js/document (getElementById "output")
                             (setAttribute
-                             "src" (str "/img/" (str filename) ".jpg"))))
+                             "src" (str "/img/" (str filename) ".jpg")))))))))
 
 (defn compare-code []
   (let [visible (.. js/document (getElementById "visible") -value)]
