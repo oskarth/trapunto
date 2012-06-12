@@ -12,7 +12,7 @@
             (text-area {:id "visible"} "")
             (text-area {:id "invisible"} "")
             (submit-button "Submit"))
-   [:img {:src "/img/trapunto1.jpg" :width "80" :height "80" :float "left"}]
+   [:img {:id "output" :src "/img/trapunto1.jpg" :width "80" :height "80" :float "left"}]
    [:script {:type "text/javascript"} "trapunto.timer(2000);"]))
 
 (defpage [:post "/"] {}

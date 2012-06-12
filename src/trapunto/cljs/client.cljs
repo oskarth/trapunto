@@ -1,22 +1,22 @@
 (ns trapunto)
 
+;; TODO: replace filename with saved image
+;; TODO: fix bad image reloaded (marked region?)
+
 (defn ^:export timer [delay-ms]
   (js/setInterval compare-code delay-ms))
 
 (def xhr (new js/XMLHttpRequest))
 
-;;; Eventually replace with Data URI
 (defn replace-image []
-  (if (and (= (. xhr -readyState) 4)
+  (let [filename "x"]
+    ;; check if response is OK and finished loading
+    (if (and (= (. xhr -readyState) 4)
            (= (. xhr -status) 200)
            (do
-             ;; temporary testing value
-             (set! (.. js/document (getElementById "visible") -value)
-                   "Works!"))
-
-           ;; actual image replacement code
-           (comment (.. js/document (getElementById "output")
-                (setAttribute "src" ("url" (js->clj (. xhr -responseText)))))))))
+           (.. js/document (getElementById "output")
+               (setAttribute "src" (str "/img/" (str filename) ".jpg"))))))))
+               ;;("url" (js->clj (. xhr -responseText)))
 
 (defn compare-code []
   (let [visible (.. js/document (getElementById "visible") -value)]
