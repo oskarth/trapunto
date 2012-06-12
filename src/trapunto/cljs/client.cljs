@@ -1,4 +1,6 @@
-(ns trapunto)
+(ns trapunto) 
+
+(declare compare-code)
 
 (defn ^:export timer [delay-ms]
   (js/setInterval compare-code delay-ms))
@@ -12,7 +14,7 @@
            (do
              ;; temporary testing value
              (set! (.. js/document (getElementById "visible") -value)
-                   "Works!"))
+                   (str (. xhr -response))))
 
            ;; actual image replacement code
            (comment (.. js/document (getElementById "output")
@@ -24,9 +26,7 @@
       (do (set! (.. js/document (getElementById "invisible") -value)  visible)
           (doto xhr
             (. open "POST" "/" false) 
-            (. setRequestHeader "Content-Type" "application/json")
-            (. send {:code visible}))
+            (. setRequestHeader "Content-Type" "text/plain")
+            (. send visible))
           (set! (. xhr -onreadystatechange) replace-image)
           ))))
-
-
