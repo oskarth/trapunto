@@ -1,4 +1,6 @@
-(ns trapunto)
+(ns trapunto) 
+
+(declare compare-code)
 
 ;; TODO: replace filename with saved image
 ;; TODO: fix bad image reloaded (marked region?)
@@ -12,11 +14,16 @@
   (let [filename "x"]
     ;; check if response is OK and finished loading
     (if (and (= (. xhr -readyState) 4)
-           (= (. xhr -status) 200)
-           (do
-           (.. js/document (getElementById "output")
-               (setAttribute "src" (str "/img/" (str filename) ".jpg"))))))))
-               ;;("url" (js->clj (. xhr -responseText)))
+             (= (. xhr -status) 200)
+             (do
+               ;; temporary testing value
+               (set! (.. js/document (getElementById "visible") -value)
+                     (str (. xhr -response)))
+               
+               ;; actual image replacement code
+               (comment (.. js/document (getElementById "output")
+                            (setAttribute
+                             "src" (str "/img/" (str filename) ".jpg"))))
 
 (defn compare-code []
   (let [visible (.. js/document (getElementById "visible") -value)]
@@ -24,9 +31,6 @@
       (do (set! (.. js/document (getElementById "invisible") -value)  visible)
           (doto xhr
             (. open "POST" "/" false) 
-            (. setRequestHeader "Content-Type" "application/json")
-            (. send {:code visible}))
-          (set! (. xhr -onreadystatechange) replace-image)
-          ))))
-
-
+            (. setRequestHeader "Content-Type" "text/plain")
+            (. send visible))
+          (set! (. xhr -onreadystatechange) replace-image)))))
