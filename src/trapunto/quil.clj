@@ -26,6 +26,9 @@
 (defn- gen-name []
   (str (to-long (now))))
 
+;; TODO: extract file name
+;; TODO: clojail process
+
 ;; insert draw before base-level code, and save after it
 (defn draw []
   (let [name (gen-name)]
@@ -43,10 +46,12 @@
   (save (str "resources/public/img/" name ".png")))) ;; insert file name to upload here
 ;; here we want to send back name to user
 
+
+;; run this to generate image
 (defsketch example
-  :title "trapunto"
   :setup setup
   :draw draw
+  :target :none
   :size [200 200])
 
 (comment
