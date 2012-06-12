@@ -15,6 +15,5 @@
    [:img {:src "/img/trapunto1.jpg" :width "80" :height "80" :float "left"}]
    [:script {:type "text/javascript"} "trapunto.timer(2000);"]))
 
-(defpage [:post "/"] {}
-  (empty))
-
+(defpage [:post "/"] []
+  (future-call (fn [] "reply from server")))
