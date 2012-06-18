@@ -21,7 +21,7 @@
                ;; temporary testing value
                (set! (.. js/document (getElementById "visible") -value)
                      (str (. xhr -response)))
-               
+
                ;; actual image replacement code
                (comment (.. js/document (getElementById "output")
                             (setAttribute
@@ -34,5 +34,8 @@
           (doto xhr
             (. open "POST" "/" false) 
             (. setRequestHeader "Content-Type" "text/plain")
-            (. send visible))
+
+            ;; Placeholder for generated image URL; random number to make it
+            ;;   easy to detect success when testing
+            (. send (. js/Math random)))
           (set! (. xhr -onreadystatechange) replace-image)))))

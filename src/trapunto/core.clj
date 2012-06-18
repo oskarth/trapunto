@@ -8,7 +8,7 @@
 
 (defroutes main-routes
   (GET "/" [] (index-page))
-  (POST "/" [] (future-call (fn [] "reply from server"))) ;; right syntax? {:keys [code]}?
+  (POST "/" {body :body} (future-call (fn [] body)))
   (route/resources "/")
   (route/not-found "Page not found"))
 
