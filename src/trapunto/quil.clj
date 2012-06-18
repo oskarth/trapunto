@@ -46,7 +46,7 @@
       (ellipse x y diam diam)))       ;;Draw a circle at x y with the correct diameter
   
   ;;   ) ;; jail time ends here
-  (save (str "resources/public/img/" name ".png")))) ;; insert file name to upload here
+  (save (str "resources/public/snapshots/" name ".png")))) ;; insert file name to upload here
 ;; here we want to send back name to user
 
 
