@@ -5,6 +5,7 @@
                            ;;[noir "1.3.0-beta8"] ;; remove
                            [clj-time "0.4.3"]
                            [quil "1.4.1"]
+                          [jayq "0.1.0-SNAPSHOT"]
                            [clojail "0.5.0"]
                            [hiccup "1.0.0"]]
             :dev-dependencies [[lein-ring "0.7.0"]
@@ -16,6 +17,7 @@
                :compiler
                {:output-to "resources/public/js/cljs.js"
                 :optimizations :simple
-                :pretty-print true}}]}
+                :pretty-print true
+                :externs ["resources/externs/codemirror.js"]}}]}
             :ring {:handler trapunto.core/app})
 ;;            :main trapunto.server) ;; remove?
