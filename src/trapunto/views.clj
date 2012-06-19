@@ -17,9 +17,12 @@
      (include-js "/js/cljs.js")]
     [:body
      [:h1 "Trapunto"]
-     (form-to [:post "/"]
-              (text-area {:id "visible"} "code" "")
-              (text-area {:id "invisible" :hidden "true"} "invis" ""))
-     [:img {:id "output" :src "/img/trapunto1.jpg" :width "80" :height "80" :float "left"}]
+     [:div#outer-wrapper
+      [:div 
+       (form-to [:post "/"]
+                (text-area {:id "visible"} "code" "")
+                (text-area {:id "invisible" :hidden "true"} "invis" ""))]
+      [:div#canvas 
+       [:img {:id "output" :src "/img/trapunto1.jpg" :width 200 :height 200 :float "right"}]]]
      [:script {:type "text/javascript"} "trapunto.client.timer(1000);"]
      [:script {:type "text/javascript"} "trapunto.client.codemirror();"]]))
