@@ -2,14 +2,15 @@
  (:use [jayq.util :only [map->js]]))
 
 (declare compare-code)
+(def input nil)
 
 (defn ^:export timer [delay-ms]
   (js/setInterval compare-code delay-ms))
 
 (defn ^:export codemirror []
-  (js/CodeMirror.fromTextArea (.getElementById js/document "visible")
-                              (map->js {:mode "text/x-clojure"})))
-;; from ibdknox live-cljs, need more?
+  (set! input
+        (js/CodeMirror.fromTextArea (.getElementById js/document "visible")
+                                    (map->js {:mode "text/x-clojure"}))))
 
 (def xhr (new js/XMLHttpRequest))
 
@@ -23,7 +24,7 @@
         (setAttribute "src" (str "/img/" (str (. xhr -response)) ".png")))))
 
 (defn compare-code []
-  (let [visible (.. js/document (getElementById "visible") -value)]
+  (let [visible (. input getValue)]
     (if-not (= visible (.. js/document (getElementById "invisible") -value))
       (do (set! (.. js/document (getElementById "invisible") -value)  visible)
           (doto xhr
