@@ -4,6 +4,7 @@ pom.xml
 /classes/
 .lein*
 resources/public/js/cljs.js
+resources/public/output/
 /native/
 *~
 *#

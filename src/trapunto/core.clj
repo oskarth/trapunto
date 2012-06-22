@@ -9,7 +9,13 @@
 
 (defroutes main-routes
   (GET "/" [] (index-page))
-  (POST "/" {body :body} (output-image body))
+  (POST "/" {body :body}
+        (let [filename (output-image body)
+              file (java.io.File. (str "resources/public/output/"
+                                       filename ".png"))]
+          (while (not (. file exists))
+            (await-for 1000))
+          filename))
   (route/resources "/")
   (route/not-found "Page not found"))
 

@@ -70,5 +70,5 @@
   (let [filename (str (gen-name))
         input (slurp instream)]
     (draw-image input [200 200]
-                (str "resources/public/output/" filename ".png")))
-  filename)
+                (str "resources/public/output/" filename ".png"))
+    filename))
