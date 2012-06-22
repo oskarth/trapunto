@@ -56,19 +56,18 @@
         (eval (read-string result))
         (. context endDraw)
         (. context save filename)
-        ;;; TODO: Do not save a file when an exception is caught from draw-image,
-        ;;;   and do not change the image on the server!
-        #_(catch Exception ex)
+        ;; Ignore exceptions-don't bother the server or user
+        (catch Exception ex)
         (finally
          (. context endDraw))))))
 
 (defn gen-name [] (to-long (now)))
 
 ;;; TODO: Do not save a file when an exception is caught from draw-image,
-;;;   and do not change the image on the server!
+;;;   and do not change the image on the server
 (defn output-image [instream]
   (let [filename (str (gen-name))
         input (slurp instream)]
-    (draw-image input [200 200]
+    (draw-image input [350 350]
                 (str "resources/public/output/" filename ".png"))
     filename))

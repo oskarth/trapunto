@@ -1,0 +1,19 @@
+h1 {
+  font-size: 1.5em;
+  font-family: sans-serif;
+  margin: 0px 10px -10px 20px;
+}
+
+h3 {
+  font-size: 1em;
+  font-family: sans-serif;
+  margin: 0px 0px 0px 30px;
+}
+
+h3 em {
+  font-style: italic;
+}
+
+#outer-wrapper {
+  margin: 20px 0px 0px 40px;
+}
