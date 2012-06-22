@@ -10,18 +10,20 @@
      [:title "Trapunto"]
      (include-css "/css/reset.css")
      (include-css "/css/codemirror.css")
+     (include-css "/css/pretty.css")
      (include-js "/js/codemirror.js")
      (include-js "/js/clojure.js")
      (include-js "/js/cljs.js")]
     [:body
      [:h1 "Trapunto"]
+     [:h3 [:em "Live image generation using Clojure, and ClojureScript, and Quil/Processing"]]
      [:div#outer-wrapper
       [:div
        (form-to [:post "/"]
                 (text-area {:id "visible"} "code" "")
                 (text-area {:id "invisible" :hidden "true"} "invis" ""))]
       [:div#canvas
-       [:img {:id "output" :src "/img/trapunto1.jpg" :width 200 :height 200
+       [:img {:id "output" :src "/img/trapunto1.jpg" :width 350 :height 350
               :float "right"}]]]
      [:script {:type "text/javascript"} "trapunto.client.timer(20000);"]
      [:script {:type "text/javascript"} "trapunto.client.codemirror();"]]))
