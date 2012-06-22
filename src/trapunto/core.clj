@@ -1,6 +1,7 @@
 (ns trapunto.core
   (:use compojure.core
-        trapunto.views)
+        trapunto.views
+        [trapunto.draw :only [output-image]])
   (:require [compojure.route :as route]
             [compojure.handler :as handler]))
 
@@ -8,7 +9,7 @@
 
 (defroutes main-routes
   (GET "/" [] (index-page))
-  (POST "/" {body :body} (future-call (fn [] body)))
+  (POST "/" {body :body} (output-image body))
   (route/resources "/")
   (route/not-found "Page not found"))
 
