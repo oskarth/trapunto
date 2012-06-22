@@ -71,5 +71,5 @@
         input (slurp instream)]
     (. (Thread. #(draw-image
                   input [200 200]
-                  (str "resources/public/img/" filename ".png"))) start)
+                  (str "resources/public/output/" filename ".png"))) start)
     filename))

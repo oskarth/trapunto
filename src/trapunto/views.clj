@@ -21,6 +21,7 @@
                 (text-area {:id "visible"} "code" "")
                 (text-area {:id "invisible" :hidden "true"} "invis" ""))]
       [:div#canvas 
-       [:img {:id "output" :src "/img/trapunto1.jpg" :width 200 :height 200 :float "right"}]]]
+       [:img {:id "output" :src "/img/trapunto1.jpg" :width 200 :height 200
+              :float "right"}]]]
      [:script {:type "text/javascript"} "trapunto.client.timer(20000);"]
      [:script {:type "text/javascript"} "trapunto.client.codemirror();"]]))

@@ -21,7 +21,7 @@
     (.. js/document (getElementById "output")
         ;; TODO Image URLs hit the page and refresh before the image is
         ;;   finished writing, preventing the image from displaying at all
-        (setAttribute "src" (str "/img/" (str (. xhr -response)) ".png")))))
+        (setAttribute "src" (str "/output/" (str (. xhr -response)) ".png")))))
 
 (defn compare-code []
   (let [visible (. input getValue)]
