@@ -69,7 +69,6 @@
 (defn output-image [instream]
   (let [filename (str (gen-name))
         input (slurp instream)]
-    (. (Thread. #(draw-image
-                  input [200 200]
-                  (str "resources/public/output/" filename ".png"))) start)
-    filename))
+    (draw-image input [200 200]
+                (str "resources/public/output/" filename ".png")))
+  filename)
