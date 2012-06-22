@@ -18,5 +18,6 @@
              (text-area {:id "visible"} "code" "")
              (text-area {:id "invisible"} "invis" "")
              (submit-button "Submit"))
-    [:img {:id "output" :src "/img/trapunto1.jpg" :width "80" :height "80" :float "left"}]
-    [:script {:type "text/javascript"} "trapunto.client.timer(1000);"]]))
+    [:img {:id "output" :src "/img/trapunto1.jpg"
+           :width "200" :height "200" :float "left"}]
+    [:script {:type "text/javascript"} "trapunto.client.timer(20000);"]]))
