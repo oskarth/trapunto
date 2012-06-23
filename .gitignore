@@ -8,3 +8,5 @@ resources/public/output/
 /native/
 *~
 *#
+*.swp
+.DS_Store
