@@ -2,9 +2,9 @@
 
 Trapunto is a "live" Clojure/ClojureScript/Quil/Processing image generation client & server. Write code that resembles Clojure and Quil on the left, get a rendered image on the right in a decent amount of time. Something like that.
 
-This project was built during [Hacker School](https://www.hackerschool.com/) and was inspired by[Chris Granger](http://www.chris-granger.com/2012/02/26/connecting-to-your-creation/) and [Bret Victor](http://vimeo.com/36579366)
+This project was built during [Hacker School](https://www.hackerschool.com/) and was inspired by [Chris Granger](http://www.chris-granger.com/2012/02/26/connecting-to-your-creation/) and [Bret Victor](http://vimeo.com/36579366)
 
-Why Trapunto? It's a method of quilting, and thus act as aa metaphor for this type of image creation, as well as being a pun on the library Quil that is being used.
+Why Trapunto? It's a method of quilting, and thus act as a metaphor for this type of image creation, as well as being a pun on the library Quil that is being used.
 
 ## Usage
 
