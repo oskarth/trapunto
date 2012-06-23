@@ -54,12 +54,12 @@
                                   (split input pattern) "")) ")")]
       (try
         (eval (read-string result))
-        (. context endDraw)
-        (. context save filename)
         ;; Ignore exceptions-don't bother the server or user
-        (catch Exception ex)
+        ;;   The server shows a stack trace but just keeps going
+        (catch Exception ex (throw (Throwable.)))
         (finally
-         (. context endDraw))))))
+         (. context endDraw)))
+      (. context save filename))))
 
 (defn gen-name [] (to-long (now)))
 
@@ -68,6 +68,8 @@
 (defn output-image [instream]
   (let [filename (str (gen-name))
         input (slurp instream)]
-    (draw-image input [350 350]
-                (str "resources/public/output/" filename ".png"))
+    (try
+      (draw-image input [350 350]
+                  (str "resources/public/output/" filename ".png"))
+      (catch Exception ex))
     filename))
